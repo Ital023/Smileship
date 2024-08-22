@@ -25,12 +25,21 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String email, String firstName, String surname) {
+    public User(Long id, String username, String password, String email, String firstName, String surname) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.surname = surname;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
