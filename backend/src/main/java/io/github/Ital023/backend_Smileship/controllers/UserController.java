@@ -31,8 +31,15 @@ public class UserController {
     }
 
     @GetMapping
-    public List<UserMinDTO> findAll() {
-        return service.findAll();
+    public ResponseEntity<List<UserMinDTO>> findAll() {
+        List<UserMinDTO> users = service.findAll();
+        return ResponseEntity.ok(users);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 

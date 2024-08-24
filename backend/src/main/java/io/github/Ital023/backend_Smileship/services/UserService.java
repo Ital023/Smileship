@@ -4,7 +4,10 @@ import io.github.Ital023.backend_Smileship.dto.UserDTO;
 import io.github.Ital023.backend_Smileship.dto.UserMinDTO;
 import io.github.Ital023.backend_Smileship.entities.User;
 import io.github.Ital023.backend_Smileship.repositories.UserRepository;
+import io.github.Ital023.backend_Smileship.services.exceptions.DatabaseExpection;
+import io.github.Ital023.backend_Smileship.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +38,19 @@ public class UserService {
                 .map(x -> new UserMinDTO(x)).toList();
 
         return dto;
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        if(!repository.existsById(id)){
+            throw new ResourceNotFoundException("Usuario não existe");
+        }
+        try{
+            repository.deleteById(id);
+        }catch (DataIntegrityViolationException e){
+            throw new DatabaseExpection("Falha de integridade referencial");
+
+        }
     }
 
 
