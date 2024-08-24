@@ -10,7 +10,9 @@ public class Factory {
                 ,"123456789"
                 ,"nascisrael@gmail.com"
                 ,"Israel"
-                ,"Nascimento");
+                ,"Nascimento"
+                ,"imagem"
+        );
     };
 
 }

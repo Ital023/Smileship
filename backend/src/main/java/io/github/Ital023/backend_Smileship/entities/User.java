@@ -22,16 +22,27 @@ public class User {
 
     private String surname;
 
+    private String imgUrl;
+
     public User() {
     }
 
-    public User(Long id, String username, String password, String email, String firstName, String surname) {
+    public User(Long id, String username, String password, String email, String firstName, String surname, String imgUrl) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.surname = surname;
+        this.imgUrl = imgUrl;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public Long getId() {
