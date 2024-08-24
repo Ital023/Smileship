@@ -1,6 +1,8 @@
 package io.github.Ital023.backend_Smileship.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_user")
@@ -11,13 +13,17 @@ public class User {
     private Long id;
 
     @Column(unique = true)
+    @NotEmpty(message = "O campo de username não pode ser vazio")
     private String username;
 
+    @NotEmpty(message = "O campo de senha não pode ser vazio")
     private String password;
 
     @Column(unique = true)
+    @NotEmpty(message = "O campo de email não pode ser vazio")
     private String email;
 
+    @NotEmpty(message = "O campo de nome não pode ser vazio")
     private String firstName;
 
     private String surname;
