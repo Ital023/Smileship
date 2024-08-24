@@ -6,6 +6,7 @@ import io.github.Ital023.backend_Smileship.entities.User;
 import io.github.Ital023.backend_Smileship.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
+    @Transactional
     public UserDTO save(UserDTO dto) {
 
         User entity = copyDtoToEntity(dto);
@@ -24,6 +26,7 @@ public class UserService {
         return new UserDTO(entity);
     }
 
+    @Transactional(readOnly = true)
     public List<UserMinDTO> findAll() {
         List<User> entities = repository.findAll();
 
