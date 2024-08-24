@@ -47,6 +47,7 @@ public class UserService {
         user.setEmail(dto.email());
         user.setFirstName(dto.firstName());
         user.setSurname(dto.surname());
+        user.setImgUrl(dto.imgUrl());
 
         return user;
     }

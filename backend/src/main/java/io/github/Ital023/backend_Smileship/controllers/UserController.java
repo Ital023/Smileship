@@ -2,8 +2,8 @@ package io.github.Ital023.backend_Smileship.controllers;
 
 import io.github.Ital023.backend_Smileship.dto.UserDTO;
 import io.github.Ital023.backend_Smileship.dto.UserMinDTO;
-import io.github.Ital023.backend_Smileship.entities.User;
 import io.github.Ital023.backend_Smileship.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ public class UserController {
     private UserService service;
 
     @PostMapping
-    public ResponseEntity<UserDTO> save(@RequestBody UserDTO dto) {
+    public ResponseEntity<UserDTO> save(@Valid @RequestBody UserDTO dto) {
         UserDTO entityDto = service.save(dto);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
